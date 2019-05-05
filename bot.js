@@ -34,7 +34,11 @@ client.on("ready", () => {
 
         if (CoffreFile.SpawnCoffre == "false" ) {
 
-            console.log("\x1b[36m", "\x1b[42m",  "le coffre n'avait pas spawn.");
+            console.log("\x1b[36m", "\x1b[42m",  "===========================");
+            console.log("\x1b[36m", "\x1b[42m",  " ");
+            console.log("\x1b[36m", "Le coffre à été spawn.");
+            console.log("\x1b[36m", " ");
+            console.log("\x1b[36m", "\x1b[42m",  "===========================");
             CoffreFile = {SpawnCoffre: "true", CoffreMultiplicateur: 0};
             fs.writeFileSync(CoffreInfo, JSON.stringify(CoffreFile, null, 2));
 
@@ -45,11 +49,15 @@ client.on("ready", () => {
             var Multi = Number(CoffreFile.CoffreMultiplicateur) + 1
             CoffreFile = {SpawnCoffre: CoffreFile.SpawnCoffre, CoffreMultiplicateur: Multi};
             fs.writeFileSync(CoffreInfo, JSON.stringify(CoffreFile, null, 2));
-            console.log("\x1b[37m", "\x1b[41m", "le coffre avait spawn. Multiplicateur de ", CoffreFile.CoffreMultiplicateur);
+            console.log("\x1b[37m", "\x1b[41m",  "===========================");
+            console.log("\x1b[37m", " ");
+            console.log("\x1b[37m", "le coffre avait spawn. Multiplicateur de ", CoffreFile.CoffreMultiplicateur);
+            console.log("\x1b[37m", " ");
+            console.log("\x1b[37m", "\x1b[41m",  "===========================");
 
         }
     }
-    setInterval(coffre, 5000);
+    setInterval(coffre, 15000);
 
 
 
@@ -71,8 +79,6 @@ client.on("ready", () => {
                 .setTitle('Coffre ouvert!')
                 .setColor(0xFF0000)
                 .addField("Multiplicateur:", CoffreFile.CoffreMultiplicateur)
-                //.addField("XP", userInfo.xp+"/100");
-            console.log("\x1b[31m", "Coffre ouvert avec");
             client.channels.get(CoffreChannel).send(embed);
 
             CoffreFile = {SpawnCoffre: "false", CoffreMultiplicateur: 0};
